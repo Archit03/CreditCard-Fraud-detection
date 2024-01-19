@@ -1,28 +1,32 @@
+Logistic Regression:
+Precision: Similar precision for both classes (around 54%).
+Recall: Balanced recall for both classes (around 51-56%).
+F1-score: Moderate F1-scores for both classes (around 52%).
+Accuracy: 54%
+Decision Tree:
+Precision: Higher precision for class 1 (fraudulent transactions) but lower recall.
+Recall: High recall for class 0, but very low for class 1.
+F1-score: Moderate F1-score for class 0, very low for class 1.
+Accuracy: 56%
+Random Forest:
+Precision: Higher precision for class 1, but lower recall.
+Recall: High recall for class 0, very low for class 1.
+F1-score: Moderate F1-score for class 0, very low for class 1.
+Accuracy: 55%
+AdaBoost:
+Precision: Balanced precision for both classes.
+Recall: Moderate recall for both classes.
+F1-score: Balanced F1-scores for both classes.
+Accuracy: 68%
+Gradient Boosting:
+Precision: Balanced precision for both classes.
+Recall: Balanced recall for both classes.
+F1-score: Balanced F1-scores for both classes.
+Accuracy: 67%
+Linear Support Vector Machine:
+Precision: Similar precision for both classes.
+Recall: Balanced recall for both classes.
+F1-score: Balanced F1-scores for both classes.
+Accuracy: 54%
 
-
-Overall:
-The model tends to have higher precision and accuracy for class 0, indicating a better ability to correctly identify non-fraudulent transactions.
-For class 1 (fraudulent transactions), recall and F1-score improve with an increasing number of decision stumps, suggesting better performance in identifying fraudulent cases as more weak learners are added.
-The trade-off between precision and recall is often observed in imbalanced datasets, where achieving high precision for one class may result in lower recall and vice versa.
-In summary, the AdaBoostClassifier is improving its ability to detect fraudulent transactions as more decision stumps are added, leading to a better balance between precision and recall. The choice of the number of decision stumps should consider the desired trade-off between precision and recall based on the specific application requirements.
-
-Common Observations:
-Class 0 (Non-fraudulent transactions):
-
-Precision: Around 53%
-Recall: Close to 100%
-F1-score: About 69%
-Class 1 (Fraudulent transactions):
-
-Precision: Around 99%
-Recall: Varies from 11% to 12%
-F1-score: Varies from 20% to 22%
-Accuracy:
-
-Varies around 56%
-Interpretation:
-For Class 0 (non-fraudulent), the models perform relatively well, achieving high recall and precision.
-
-For Class 1 (fraudulent), the models tend to have high precision but low recall. This means they are good at identifying actual fraudulent transactions when they predict positive, but they miss many of the actual fraudulent cases (low recall).
-
-The accuracy is influenced by the dominant class (non-fraudulent) due to the imbalance in the dataset. High precision and low recall for the minority class are typical in imbalanced datasets.
+Hence, the Best so far is AdaBoost. With an Accuracy of 68%.
