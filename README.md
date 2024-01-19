@@ -22,10 +22,9 @@ This project focuses on building and evaluating machine learning models for cred
 - `streamlit` for model deployment
 
 ## Usage
-
-1. Install the required libraries using `pip install -r requirements.txt`.
-2. Ensure the dataset file (`creditcard.csv`) is in the same directory.
-3. Create a Virtual env to run `ML.py`. 
+1. Create a Virtual env to run `ML.py`. 
+2. Install the required libraries using `pip install -r requirements.txt`.
+3. Ensure the dataset file (`creditcard.csv`) is in the same directory.
 4. Run the `ML.py` script to train and evaluate machine learning models.
 
 ## Machine Learning Models
