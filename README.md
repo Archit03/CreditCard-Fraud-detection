@@ -37,7 +37,7 @@ The following machine learning models were implemented and evaluated:
 - AdaBoost
 - Gradient Boosting
 - Linear Support Vector Machine (SVM)
-- Support Vector Machine with Polynomial kernel
+- Support Vector Machine with Polynomial kernel and rbf kernel.
 
 ## Results
 
