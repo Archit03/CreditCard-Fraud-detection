@@ -21,6 +21,7 @@ This project focuses on building and evaluating machine learning models for cred
 - `sklearn` (various modules for models, preprocessing, and metrics)
 - `imbalanced-learn` (for oversampling)
 - `xgboost` (if used, based on the conversation)
+- `streamlit` for model deployment
 
 ## Usage
 
