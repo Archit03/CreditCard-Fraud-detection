@@ -1,0 +1,7 @@
+
+
+Overall:
+The model tends to have higher precision and accuracy for class 0, indicating a better ability to correctly identify non-fraudulent transactions.
+For class 1 (fraudulent transactions), recall and F1-score improve with an increasing number of decision stumps, suggesting better performance in identifying fraudulent cases as more weak learners are added.
+The trade-off between precision and recall is often observed in imbalanced datasets, where achieving high precision for one class may result in lower recall and vice versa.
+In summary, the AdaBoostClassifier is improving its ability to detect fraudulent transactions as more decision stumps are added, leading to a better balance between precision and recall. The choice of the number of decision stumps should consider the desired trade-off between precision and recall based on the specific application requirements.
