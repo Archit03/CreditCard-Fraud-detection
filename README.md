@@ -27,7 +27,8 @@ This project focuses on building and evaluating machine learning models for cred
 
 1. Install the required libraries using `pip install -r requirements.txt`.
 2. Ensure the dataset file (`creditcard.csv`) is in the same directory.
-3. Run the `ML.py` script to train and evaluate machine learning models.
+3. Create a Virtual env to run `ML.py`. 
+4. Run the `ML.py` script to train and evaluate machine learning models.
 
 ## Machine Learning Models
 
