@@ -1,13 +1,16 @@
-import streamlit as st
+import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import seaborn as sns
-from sklearn.ensemble import RandomForestClassifier
+import seaborn as sb
+import warnings
+from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier, GradientBoostingClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import classification_report, confusion_matrix
+from sklearn.linear_model import LogisticRegression
+from sklearn.tree import DecisionTreeClassifier
 from imblearn.over_sampling import RandomOverSampler
-import warnings
+from sklearn.svm import LinearSVC, SVC
 
 warnings.filterwarnings('ignore')
 
@@ -31,43 +34,43 @@ ros = RandomOverSampler(random_state=1)
 X_train_resampled, Y_train_resampled = ros.fit_resample(X_train, Y_train)
 X_test_resampled, Y_test_resampled = ros.fit_resample(X_test, Y_test)
 
-# Create a RandomForestClassifier
+def evaluate_model(model, X_train, Y_train, X_test, Y_test, model_name):
+    print(f"\n{model_name}:")  # Display model name
+    model.fit(X_train, Y_train)
+    Y_pred = model.predict(X_test)
+    print("Confusion Matrix:")
+    print(confusion_matrix(Y_test, Y_pred))
+    print("Classification Report:")
+    print(classification_report(Y_test, Y_pred))
+
+# Logistic Regression
+lr = LogisticRegression()
+evaluate_model(lr, X_train_resampled, Y_train_resampled, X_test_resampled, Y_test_resampled, "Logistic Regression")
+
+# Decision Tree
+dt = DecisionTreeClassifier(random_state=1)
+evaluate_model(dt, X_train_resampled, Y_train_resampled, X_test_resampled, Y_test_resampled, "Decision Tree")
+
+# Random Forest
 rfc = RandomForestClassifier(random_state=1, n_estimators=65)
+evaluate_model(rfc, X_train_resampled, Y_train_resampled, X_test_resampled, Y_test_resampled, "Random Forest")
 
-# Train the model
-rfc.fit(X_train_resampled, Y_train_resampled)
+# AdaBoost
+ada = AdaBoostClassifier(random_state=1, n_estimators=3)
+evaluate_model(ada, X_train_resampled, Y_train_resampled, X_test_resampled, Y_test_resampled, "AdaBoost")
 
-# Evaluate the model
-Y_pred = rfc.predict(X_test_resampled)
-conf_matrix = confusion_matrix(Y_test_resampled, Y_pred)
-classification_rep = classification_report(Y_test_resampled, Y_pred)
+# Gradient Boosting
+gbc = GradientBoostingClassifier(random_state=1, n_estimators=3)
+evaluate_model(gbc, X_train_resampled, Y_train_resampled, X_test_resampled, Y_test_resampled, "Gradient Boosting")
 
-# Feature Importance
-feature_importance = rfc.feature_importances_
-features = X.columns
+# Linear Support Vector Machine
+svc = LinearSVC(random_state=1)
+evaluate_model(svc, X_train_resampled, Y_train_resampled, X_test_resampled, Y_test_resampled, "Linear Support Vector Machine")
 
-# Streamlit app
-st.title("Credit Card Fraud Detection")
+# Support Vector Machine with RBF Kernel
+svc_rbf = SVC(random_state=1, kernel='rbf')
+evaluate_model(svc_rbf, X_train_resampled, Y_train_resampled, X_test_resampled, Y_test_resampled, "Support Vector Machine with RBF Kernel")
 
-# Display confusion matrix
-st.subheader("Confusion Matrix:")
-st.write(conf_matrix)
-
-# Display classification report
-st.subheader("Classification Report:")
-st.write(classification_rep)
-
-# Plot confusion matrix heatmap
-st.subheader("Confusion Matrix Heatmap:")
-plt.figure(figsize=(8, 6))
-sns.heatmap(conf_matrix, annot=True, fmt='d', cmap='Blues', xticklabels=['Predicted 0', 'Predicted 1'], yticklabels=['Actual 0', 'Actual 1'])
-st.pyplot()
-
-# Plot feature importance
-st.subheader("Feature Importance:")
-plt.figure(figsize=(10, 6))
-sns.barplot(x=feature_importance, y=features)
-plt.title("Feature Importance")
-plt.xlabel("Importance")
-plt.ylabel("Features")
-st.pyplot()
+# Support Vector Machine with Polynomial kernel
+svc_poly = SVC(random_state=1, kernel='poly')
+evaluate_model(svc_poly, X_train_resampled, Y_train_resampled, X_test_resampled, Y_test_resampled, "Support Vector Machine with Polynomial kernel")
