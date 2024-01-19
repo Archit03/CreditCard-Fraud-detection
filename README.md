@@ -1,5 +1,3 @@
-# CreditCard-Fraud-detection
-
 # Credit Card Fraud Detection
 
 ## Overview
